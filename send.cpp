@@ -73,8 +73,6 @@ void usage() {
 
 using namespace std;
 int main(int argc, char *argv[]) {
-  setenv("WIRINGPI_GPIOMEM", "1", 0);
-
   if (wiringPiSetup () == -1) return EXIT_FAILURE;
   piHiPri(99);
 
