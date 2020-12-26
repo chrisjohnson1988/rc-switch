@@ -4,7 +4,7 @@ send: RCSwitch.o send.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 
 send_raw: send_raw.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 	
 clean:
 	$(RM) *.o send send_raw
