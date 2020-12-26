@@ -60,7 +60,7 @@ bool isValidConfig(config config) {
 
 void transmit(config config, std::string bits) {
     for(int t=0; t<config.repeat; t++) {
-        for (char &i : bits) {
+        for (char &i : bits.substr(bits.length() - config.bit_length)) {
             if(i == '1') {
                 digitalWrite(PIN, 1);
                 usleep(config.short_pulse);
@@ -75,7 +75,7 @@ void transmit(config config, std::string bits) {
         }
         digitalWrite(PIN, 0);
         usleep(config.extended_pulse);
-    }  
+    }
 }
 
 bool isbdigit(char onoff) {
@@ -121,7 +121,7 @@ std::string parseBitString(char* data, config* config) {
     }
     if (data[0] == 'x' && isValidString(&data[1], &isxdigit)) {
         std::string toReturn;
-        for(int i=1; i<strlen(data); i++) 
+        for(int i=1; i<strlen(data); i++)
             toReturn.append(hexToBinary(data[i]));
         return toReturn;
     }
